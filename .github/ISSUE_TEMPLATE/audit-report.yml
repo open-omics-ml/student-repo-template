@@ -2,6 +2,15 @@ name: Audit Report
 description: Open Omics ML reanalysis audit report — complete one per study
 title: "Audit Report: [AUTHOR] [YEAR] — [BRIEF TITLE]"
 labels: ["audit-report"]
+jobs:
+  validate:
+    permissions:
+      issues: write
+    uses: open-omics-ml/open-omics-ml/.github/workflows/validate-audit-report.yml@main
+    with:
+      issue_number: ${{ github.event.issue.number }}
+      issue_body: ${{ github.event.issue.body }}
+    secrets: inherit
 body:
 
   - type: markdown
