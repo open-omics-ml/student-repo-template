@@ -1,0 +1,14 @@
+# student-repo-template/.github/workflows/audit-report.yml
+name: Validate Audit Report
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  validate:
+    uses: open-omics-ml/open-omics-ml/.github/workflows/validate-audit-report.yml@main
+    with:
+      issue_number: ${{ github.event.issue.number }}
+      issue_body: ${{ github.event.issue.body }}
+    secrets: inherit
